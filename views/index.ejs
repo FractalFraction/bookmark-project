@@ -15,6 +15,12 @@
         <input id="add-button" type='submit' value='Add Bookmark'>
     </form>
 
+    <% bookmarks.map (bookmarks => { %>
+        <p></p>
+        <span id='<%= `url${bookmarks.id}` %>'>url: <%= bookmarks.url %></span><br>
+        <span id='<%= `tag${bookmarks.id}` %>'> tag: <%= bookmarks.tag %></span><br>
+        <span id='<%= `comment${bookmarks.id}` %>'>comment: <%= bookmarks.comment %></span><br>
+    <% }) %>
     
 </body>
 </html>

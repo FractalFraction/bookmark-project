@@ -11,8 +11,6 @@ describe('bookmark manager index page', () => {
         cy.get('#tag-box').type('proscrastination')
         cy.get('#comment-box').type('for the memes')
         cy.get('#add-button').click()
-        cy.get('#bookmark-1').contains('reddit')
+        cy.get('#url1').contains('reddit')
     })
-
-
 });

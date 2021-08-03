@@ -11,8 +11,11 @@ app.set('view engine','ejs');
 app.use(express.urlencoded({ extended: true}));
 
 // Requests to Index 
-app.get('/',  (req, res) => {
-  res.render('index.ejs');
+app.get('/', async (req, res) => {
+
+  const bookmarks = await models.Bookmark.findAll({})
+
+  res.render('index.ejs', {bookmarks: bookmarks});
 })
 
 app.post('/', async (req, res) => {
@@ -20,8 +23,8 @@ app.post('/', async (req, res) => {
     // Store the data using sequelize
     await models.Bookmark.create(
         {
-          url:  req.body.tag ,
-          tag: req.body.url,
+          url:  req.body.url,
+          tag: req.body.tag,
           comment: req.body.comment
         }
         )
@@ -30,7 +33,7 @@ app.post('/', async (req, res) => {
         console.log(req.body.comment);
 
     // POST the bookmark data
-    res.redirect('index.ejs');
+    res.redirect('/');
 })
 
 

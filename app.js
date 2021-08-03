@@ -26,18 +26,13 @@ app.post('/', async (req, res) => {
           url:  req.body.url,
           tag: req.body.tag,
           comment: req.body.comment
-        }
-        )
-        console.log(req.body.tag);
-        console.log(req.body.url);
-        console.log(req.body.comment);
+        })
 
     // POST the bookmark data
     res.redirect('/');
 })
 
 app.post('/delete', async (req, res) => {
-    
 
     // Store the data using sequelize
     await models.Bookmark.destroy({
@@ -45,21 +40,27 @@ app.post('/delete', async (req, res) => {
             url: req.body.dropdown
         }
         })
-
-        // {
-        //   url:  req.body.url,
-        //   tag: req.body.tag,
-        //   comment: req.body.comment
-        // }
-        // )
         console.log(req.body.dropdown);
-        // console.log(req.body.url);
-        // console.log(req.body.comment);
 
     // POST the bookmark data
     res.redirect('/');
 })
 
+app.post('/update', async (req, res) => {
+
+    // Store the data using sequelize
+    await models.Bookmark.update({
+        tag: req.body.updateTag,
+        comment: req.body.updateComment},{
+        where: {
+            url: req.body.update
+        }
+        })
+        console.log(req.body.dropdown);
+
+    // POST the bookmark data
+    res.redirect('/');
+})
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}!`);

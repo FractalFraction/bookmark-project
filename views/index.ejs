@@ -15,6 +15,19 @@
         <input id="add-button" type='submit' value='Add Bookmark'>
     </form>
 
+    <form action='/update' method='post'>
+        <select id="update-dropdown" name='update'>
+            <% bookmarks.map (bookmarks => { %>
+                <option id='<%=`url${bookmarks.id}`%>' value='<%= bookmarks.url %>'>
+                    <%=`${bookmarks.url}`%>
+                </option>
+            <% }) %>
+        </select>
+        <input id='update-tag' type='text' name='updateTag' placeholder='tag'>
+        <input id='update-comment' type='text' name='updateComment' placeholder='comment'>
+        <input id="update-button" type='submit' value='Update Bookmark'>
+    </form>
+
     <form action='/delete' method='post'>
         <select id="bookmark-dropdown" name='dropdown'>
             <% bookmarks.map (bookmarks => { %>

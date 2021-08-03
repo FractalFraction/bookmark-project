@@ -11,7 +11,7 @@ describe('bookmark manager index page', () => {
         cy.get('#tag-box').type('proscrastination')
         cy.get('#comment-box').type('for the memes')
         cy.get('#add-button').click()
-        cy.get('#url1').contains('reddit')
+        cy.get('#url12').contains('reddit')
     })
 
     it('delete a bookmark', () => {
@@ -21,8 +21,20 @@ describe('bookmark manager index page', () => {
         cy.get('#comment-box').type('for the memes')
         cy.get('#add-button').click()
         // Rewrite line below??
-        cy.get('#bookmark-dropdown').select('#url1')
+        cy.get('#bookmark-dropdown').select('www.reddit.com')
         cy.get('#delete-button').click()
+    })
+
+    it('updates a bookmark', () => {
+        cy.visit('/');
+        cy.get('#url-box').type('www.reddit.com')
+        cy.get('#tag-box').type('proscrastination')
+        cy.get('#comment-box').type('for the memes')
+        cy.get('#add-button').click()
+        // Rewrite line below??
+        cy.get('#update-dropdown').select('www.reddit.com')
+        cy.get('#update-tag').type('cat pictures')
+        cy.get('#update-button').click()
     })
 
 

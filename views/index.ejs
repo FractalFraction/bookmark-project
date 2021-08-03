@@ -15,13 +15,27 @@
         <input id="add-button" type='submit' value='Add Bookmark'>
     </form>
 
+    <form action='/delete' method='post'>
+        <select id="bookmark-dropdown" name='dropdown'>
+            <% bookmarks.map (bookmarks => { %>
+                <option id='<%=`url${bookmarks.id}`%>' value='<%= bookmarks.url %>'>
+                    <%=`${bookmarks.url}`%>
+                </option>
+            <% }) %>
+        </select>
+        <input id="delete-button" type='submit' value='Delete Bookmark'>
+    </form>
+  
     <% bookmarks.map (bookmarks => { %>
         <p></p>
         <span id='<%= `url${bookmarks.id}` %>'>url: <%= bookmarks.url %></span><br>
         <span id='<%= `tag${bookmarks.id}` %>'> tag: <%= bookmarks.tag %></span><br>
         <span id='<%= `comment${bookmarks.id}` %>'>comment: <%= bookmarks.comment %></span><br>
     <% }) %>
-    
+
+   
+
+
 </body>
 </html>
 

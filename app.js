@@ -36,6 +36,30 @@ app.post('/', async (req, res) => {
     res.redirect('/');
 })
 
+app.post('/delete', async (req, res) => {
+    
+
+    // Store the data using sequelize
+    await models.Bookmark.destroy({
+        where: {
+            url: req.body.dropdown
+        }
+        })
+
+        // {
+        //   url:  req.body.url,
+        //   tag: req.body.tag,
+        //   comment: req.body.comment
+        // }
+        // )
+        console.log(req.body.dropdown);
+        // console.log(req.body.url);
+        // console.log(req.body.comment);
+
+    // POST the bookmark data
+    res.redirect('/');
+})
+
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}!`);

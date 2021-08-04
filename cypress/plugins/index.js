@@ -16,7 +16,39 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+
+//require('dotenv').config()
+
+const truncateTables = require('../../test/truncateTables.js');
+const createTestBookmark = require('../../test/createTestBookmark.js');
+const updateTestBookmark = require('../../test/updateTestBookmark.js');
+
+
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+  on('task', {
+
+    taskTruncateTables() {
+      console.log('Running truncateTables task!')
+      truncateTables()
+      return null  
+  },
+
+    taskCreateTestBookmark() {
+      console.log('Running createBookmark task!')
+      createTestBookmark()
+      return null  
+  },
+
+  taskUpdateTestBookmark() {
+    console.log('Running updateBookmark task!')
+    updateTestBookmark()
+    return null  
+  }
+
+
+
+  })
+  
 }

@@ -6,15 +6,35 @@ describe('bookmark manager index page', () => {
     })
 
     it('adds a bookmark', () => {
+        cy.task('taskTruncateTables');
         cy.visit('/');
         cy.get('#url-box').type('www.reddit.com')
         cy.get('#tag-box').type('proscrastination')
         cy.get('#comment-box').type('for the memes')
         cy.get('#add-button').click()
-        cy.get('#url12').contains('reddit')
+        cy.get('#url1').contains('reddit')
     })
 
+    it('select a bookmark that exists', () => {
+        cy.task('taskTruncateTables');
+        cy.task('taskCreateTestBookmark');
+        cy.visit('/');
+        cy.get('#url1').contains('hello.com')
+    })
+
+
+    it.only('update a bookmark during setup', () => {
+        cy.task('taskTruncateTables');
+        cy.task('taskCreateTestBookmark');
+        cy.visit('/');
+        cy.get('#tag1').contains('gossip')
+        cy.task('taskUpdateTestBookmark');
+        cy.get('#tag1').contains('conversation')
+    })
+
+
     it('delete a bookmark', () => {
+        cy.task('taskTruncateTables');
         cy.visit('/');
         cy.get('#url-box').type('www.reddit.com')
         cy.get('#tag-box').type('proscrastination')
@@ -26,6 +46,7 @@ describe('bookmark manager index page', () => {
     })
 
     it('updates a bookmark', () => {
+        cy.task('taskTruncateTables');
         cy.visit('/');
         cy.get('#url-box').type('www.reddit.com')
         cy.get('#tag-box').type('proscrastination')

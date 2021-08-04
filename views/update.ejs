@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Update your bookmark!</h1>
+    <div>
+        <form action='/<%=id%>?_method=PUT' method='post'>
+            <input id='update-tag' type='text' name='updateTag' placeholder='tag'>
+            <input id='update-comment' type='text' name='updateComment' placeholder='comment'>
+            <input id="update-button" type='submit' value='Update Bookmark'>
+        </form>
+    </div>
+
+</body>
+</html>

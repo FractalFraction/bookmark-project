@@ -20,22 +20,6 @@ app.get('/', async (req, res) => {
   res.render('index.ejs', {bookmarks: bookmarks});
 })
 
-
-// const promise = async (req, res) => {
-    
-//     // Modify the create method to check 
-//     // if the url already exists and if so tell the user 
-
-//     // Store the data using sequelize
-//     await models.Bookmark.create(
-//         {
-//           url:  req.body.url,
-//           tag: req.body.tag,
-//           comment: req.body.comment
-//         })
-//     }
-
-
 app.post('/', async (req, res) => {
     
     // Modify the create method to check 
@@ -50,7 +34,7 @@ app.post('/', async (req, res) => {
           comment: req.body.comment
         })
 
-        //res.redirect('/');
+        res.redirect('/');
     } catch(error) {
         console.log('Validation Error: URLs must be Unique!')
     }
@@ -84,8 +68,6 @@ app.delete('/:id', async (req, res) => {
             id: req.params.id
         }
         })
-        console.log('ID');
-        console.log(req.params.id);
 
     // POST the bookmark data
     res.redirect('/');
@@ -102,10 +84,28 @@ app.post('/update', async (req, res) => {
             url: req.body.update
         }
         })
-        console.log(req.body.dropdown);
 
     // POST the bookmark data
     res.redirect('/');
+})
+
+app.post('/update-button/:id', async (req, res) => {
+
+    res.render('update', { id: req.params.id
+        })
+})
+
+app.put('/:id', async (req,res) => {
+
+    await models.Bookmark.update({
+        tag: req.body.updateTag,
+        comment: req.body.updateComment},{
+        where: {
+            id: req.params.id
+        }
+    })
+
+    res.redirect('/')
 })
 
 app.listen(port, () => {

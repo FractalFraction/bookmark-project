@@ -17,9 +17,9 @@
 
     <form action='/update' method='post'>
         <select id="update-dropdown" name='update'>
-            <% bookmarks.map (bookmarks => { %>
-                <option id='<%=`url${bookmarks.id}`%>' value='<%= bookmarks.url %>'>
-                    <%=`${bookmarks.url}`%>
+            <% bookmarks.map ((bookmark,index) => { %>
+                <option id='<%=`url${index + 1}`%>' value='<%= bookmark.url %>'>
+                    <%=`${bookmark.url}`%>
                 </option>
             <% }) %>
         </select>
@@ -30,24 +30,26 @@
 
     <form action='/delete' method='post'>
         <select id="bookmark-dropdown" name='dropdown'>
-            <% bookmarks.map (bookmarks => { %>
-                <option id='<%=`url${bookmarks.id}`%>' value='<%= bookmarks.url %>'>
-                    <%=`${bookmarks.url}`%>
+            <% bookmarks.map ((bookmark,index) => { %>
+                <option id='<%=`url${index + 1}`%>' value='<%= bookmark.url %>'>
+                    <%=`${bookmark.url}`%>
                 </option>
             <% }) %>
         </select>
-        <input id="delete-button" type='submit' value='Delete Bookmark'>
+        <input id="delete-dropdown-button" type='submit' value='Delete Bookmark'>
     </form>
   
-    <% bookmarks.map (bookmarks => { %>
+    <% bookmarks.map ((bookmark,index) => { %>
         <p></p>
-        <span id='<%= `url${bookmarks.id}` %>'>url: <%= bookmarks.url %></span><br>
-        <span id='<%= `tag${bookmarks.id}` %>'> tag: <%= bookmarks.tag %></span><br>
-        <span id='<%= `comment${bookmarks.id}` %>'>comment: <%= bookmarks.comment %></span><br>
+        <span id='<%= `url${index + 1}` %>'>url: <%= bookmark.url %></span><br>
+        <span id='<%= `tag${index + 1}` %>'> tag: <%= bookmark.tag %></span><br>
+        <span id='<%= `comment${index + 1}` %>'>comment: <%= bookmark.comment %></span><br>
+
+        <form action='/<%=bookmark.id%>?_method=DELETE' method='post'>
+            <button id='<%=`delete-button-${index + 1}` %>' type="submit" >Delete</button>
+        </form>
+
     <% }) %>
-
-   
-
 
 </body>
 </html>

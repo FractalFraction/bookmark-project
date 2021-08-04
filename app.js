@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express');
+const methodOverride = require('method-override')
 const app = express();
 
 const port = 3000;
@@ -9,6 +10,7 @@ const {models,sequelize} = require('./models');
 
 app.set('view engine','ejs');
 app.use(express.urlencoded({ extended: true}));
+app.use(methodOverride('_method'))
 
 // Requests to Index 
 app.get('/', async (req, res) => {
@@ -19,19 +21,19 @@ app.get('/', async (req, res) => {
 })
 
 
-const promise = async (req, res) => {
+// const promise = async (req, res) => {
     
-    // Modify the create method to check 
-    // if the url already exists and if so tell the user 
+//     // Modify the create method to check 
+//     // if the url already exists and if so tell the user 
 
-    // Store the data using sequelize
-    await models.Bookmark.create(
-        {
-          url:  req.body.url,
-          tag: req.body.tag,
-          comment: req.body.comment
-        })
-    }
+//     // Store the data using sequelize
+//     await models.Bookmark.create(
+//         {
+//           url:  req.body.url,
+//           tag: req.body.tag,
+//           comment: req.body.comment
+//         })
+//     }
 
 
 app.post('/', async (req, res) => {
@@ -58,6 +60,7 @@ app.post('/', async (req, res) => {
    
 })
 
+// Dropdown deletion
 app.post('/delete', async (req, res) => {
 
     // Store the data using sequelize
@@ -70,6 +73,23 @@ app.post('/delete', async (req, res) => {
 
     // POST the bookmark data
     res.redirect('/');
+})
+
+// Delete via Button
+app.delete('/:id', async (req, res) => {
+
+// Store the data using sequelize
+    await models.Bookmark.destroy({
+        where: {
+            id: req.params.id
+        }
+        })
+        console.log('ID');
+        console.log(req.params.id);
+
+    // POST the bookmark data
+    res.redirect('/');
+
 })
 
 app.post('/update', async (req, res) => {

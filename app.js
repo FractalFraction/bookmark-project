@@ -12,39 +12,13 @@ app.set('view engine','ejs');
 app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride('_method'))
 
+const indexRouter = require('./routes/index');
+const addRouter = require('./routes/add');
+//Require more routers here
 
-// Requests to Index 
-app.get('/', async (req, res) => {
-
-  const bookmarks = await models.Bookmark.findAll({})
-
-  res.render('index.ejs', {bookmarks: bookmarks});
-})
-
-
-app.post('/', async (req, res) => {
-    
-    // Modify the create method to check 
-    // if the url already exists and if so tell the user 
-    
-    try {
-    // Store the data using sequelize
-    await models.Bookmark.create(
-        {
-          url:  req.body.url,
-          tag: req.body.tag,
-          comment: req.body.comment
-        })
-
-        res.redirect('/');
-    } catch(error) {
-        console.log('Validation Error: URLs must be Unique!')
-    }
-
-    res.redirect('/');
-    // POST the bookmark data
-   
-})
+app.use('/',indexRouter);
+app.use('/',addRouter);
+//Add more routers here
 
 // Dropdown deletion
 app.post('/delete', async (req, res) => {

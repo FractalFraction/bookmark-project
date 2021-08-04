@@ -18,8 +18,28 @@ app.get('/', async (req, res) => {
   res.render('index.ejs', {bookmarks: bookmarks});
 })
 
+
+const promise = async (req, res) => {
+    
+    // Modify the create method to check 
+    // if the url already exists and if so tell the user 
+
+    // Store the data using sequelize
+    await models.Bookmark.create(
+        {
+          url:  req.body.url,
+          tag: req.body.tag,
+          comment: req.body.comment
+        })
+    }
+
+
 app.post('/', async (req, res) => {
     
+    // Modify the create method to check 
+    // if the url already exists and if so tell the user 
+    
+    try {
     // Store the data using sequelize
     await models.Bookmark.create(
         {
@@ -28,8 +48,14 @@ app.post('/', async (req, res) => {
           comment: req.body.comment
         })
 
-    // POST the bookmark data
+        //res.redirect('/');
+    } catch(error) {
+        console.log('Validation Error: URLs must be Unique!')
+    }
+
     res.redirect('/');
+    // POST the bookmark data
+   
 })
 
 app.post('/delete', async (req, res) => {

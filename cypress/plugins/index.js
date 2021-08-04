@@ -22,7 +22,7 @@
 const truncateTables = require('../../test/truncateTables.js');
 const createTestBookmark = require('../../test/createTestBookmark.js');
 const updateTestBookmark = require('../../test/updateTestBookmark.js');
-
+const resetIds = require('../../test/resetIds.js');
 
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
@@ -45,9 +45,13 @@ module.exports = (on, config) => {
     console.log('Running updateBookmark task!')
     updateTestBookmark()
     return null  
+  },
+
+  taskResetIds() {
+    console.log('Running resetIds task!')
+    resetIds()
+    return null
   }
-
-
 
   })
   

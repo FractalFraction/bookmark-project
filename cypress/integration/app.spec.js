@@ -25,11 +25,12 @@ describe('bookmark manager index page', () => {
 
     it.only('update a bookmark during setup', () => {
         cy.task('taskTruncateTables');
+        cy.task('taskResetIds');
         cy.task('taskCreateTestBookmark');
         cy.visit('/');
-        cy.get('#tag1').contains('gossip')
+        cy.get('span').contains('gossip')
         cy.task('taskUpdateTestBookmark');
-        cy.get('#tag1').contains('conversation')
+        cy.get('span').contains('conversation')
     })
 
 

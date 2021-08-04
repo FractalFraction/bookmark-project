@@ -9,8 +9,8 @@ const updateTestBookmark = () => {
             where: {
                 url: 'hello.com'
             }
-        }
-      });
-}
+        })
+      };
+
 
 module.exports = updateTestBookmark;

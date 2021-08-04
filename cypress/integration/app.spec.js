@@ -28,9 +28,9 @@ describe('bookmark manager index page', () => {
         cy.task('taskResetIds');
         cy.task('taskCreateTestBookmark');
         cy.visit('/');
-        cy.get('span').contains('gossip')
+        cy.get('#tag1').contains('gossip')
         cy.task('taskUpdateTestBookmark');
-        cy.get('span').contains('conversation')
+        cy.get('#tag1').contains('conversation')
     })
 
 

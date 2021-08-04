@@ -1,0 +1,14 @@
+<div>
+    <form action='/update' method='post'>
+        <select id="update-dropdown" name='update'>
+            <% bookmarks.map ((bookmark,index) => { %>
+                <option id='<%=`url${index + 1}`%>' value='<%= bookmark.url %>'>
+                    <%=`${bookmark.url}`%>
+                </option>
+            <% }) %>
+        </select>
+        <input id='update-tag' type='text' name='updateTag' placeholder='tag'>
+        <input id='update-comment' type='text' name='updateComment' placeholder='comment'>
+        <input id="update-button" type='submit' value='Update Bookmark'>
+    </form>
+</div>

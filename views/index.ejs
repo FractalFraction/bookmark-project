@@ -8,49 +8,10 @@
 <body>
     <h1>Best Bookmark Manager</h1>
 
-    <form action='/' method='post'>
-        <input id="url-box" type='text' name='url' placeholder='url'>
-        <input id="tag-box" type='text' name='tag' placeholder='tag'>
-        <input id="comment-box" type='text' name='comment' placeholder='comment'>
-        <input id="add-button" type='submit' value='Add Bookmark'>
-    </form>
-
-    <form action='/update' method='post'>
-        <select id="update-dropdown" name='update'>
-            <% bookmarks.map ((bookmark,index) => { %>
-                <option id='<%=`url${index + 1}`%>' value='<%= bookmark.url %>'>
-                    <%=`${bookmark.url}`%>
-                </option>
-            <% }) %>
-        </select>
-        <input id='update-tag' type='text' name='updateTag' placeholder='tag'>
-        <input id='update-comment' type='text' name='updateComment' placeholder='comment'>
-        <input id="update-button" type='submit' value='Update Bookmark'>
-    </form>
-
-    <form action='/delete' method='post'>
-        <select id="bookmark-dropdown" name='dropdown'>
-            <% bookmarks.map ((bookmark,index) => { %>
-                <option id='<%=`url${index + 1}`%>' value='<%= bookmark.url %>'>
-                    <%=`${bookmark.url}`%>
-                </option>
-            <% }) %>
-        </select>
-        <input id="delete-dropdown-button" type='submit' value='Delete Bookmark'>
-    </form>
-  
-    <% bookmarks.map ((bookmark,index) => { %>
-        <p></p>
-        <span id='<%= `url${index + 1}` %>'>url: <%= bookmark.url %></span><br>
-        <span id='<%= `tag${index + 1}` %>'> tag: <%= bookmark.tag %></span><br>
-        <span id='<%= `comment${index + 1}` %>'>comment: <%= bookmark.comment %></span><br>
-        <form action='/<%=bookmark.id%>?_method=DELETE' method='post'>
-            <button id='<%=`delete-button-${index + 1}` %>' type="submit" >Delete</button>
-        </form>
-        <form action='/update-button/<%=bookmark.id%>' method='post'>
-            <input id='<%=`update-button-${index +1 }` %>' type='submit' value='Update'>
-        </form>
-    <% }) %>
+    <%- include('partials/add-bookmark') %>
+    <%- include('partials/update-dropdown') %>
+    <%- include('partials/delete-dropdown') %>
+    <%- include('partials/bookmarks') %>
 
 </body>
 </html>

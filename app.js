@@ -12,6 +12,7 @@ app.set('view engine','ejs');
 app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride('_method'))
 
+
 // Requests to Index 
 app.get('/', async (req, res) => {
 
@@ -19,6 +20,7 @@ app.get('/', async (req, res) => {
 
   res.render('index.ejs', {bookmarks: bookmarks});
 })
+
 
 app.post('/', async (req, res) => {
     

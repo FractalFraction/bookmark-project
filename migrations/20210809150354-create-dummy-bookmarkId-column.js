@@ -4,19 +4,17 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
      * Add altering commands here.
+     *
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-
-     await queryInterface.addColumn('Comments', 'bookmark id', {
+     await queryInterface.addColumn('Comments', 'BookmarkId', {
       type: Sequelize.INTEGER,
-      allowNull: false,
-      after: 'text',
-      reference: {
-        model: 'Bookmarks',
-        key: 'id'
+      allowNull: true,
+      after: 'bookmarks id'
       }
-    });
+     )
+
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -26,8 +24,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-     
-      await queryInterface.removeColumn('Comments','bookmark id');
-    }
 
+    await queryInterface.removeColumn('Comments', 'BookmarkId')
+  }
 };

@@ -1,14 +1,25 @@
 <div>
 <% bookmarks.map ((bookmark,index) => { %>
     <p></p>
+    <span id='<%= `name${index + 1}` %>'>name: <%= bookmark.name %></span><br>
     <span id='<%= `url${index + 1}` %>'>url: <%= bookmark.url %></span><br>
-    <span id='<%= `tag${index + 1}` %>'> tag: <%= bookmark.tag %></span><br>
-    <span id='<%= `comment${index + 1}` %>'>comment: <%= bookmark.comment %></span><br>
-    <form action='/<%=bookmark.id%>?_method=DELETE' method='post'>
+    <span id='<%= `tag${index + 1}` %>'> tags: <%= bookmark.tag %></span><br>
+    <% bookmark.id %> 
+    <form action='/<%=bookmark.id%>?_method=DELETE' method="POST">
         <button id='<%=`delete-button-${index + 1}` %>' type="submit" >Delete</button>
     </form>
-    <form action='/update-button/<%=bookmark.id%>' method='post'>
+    <form action='/update-button<%=bookmark.id%>' method="POST">
         <input id='<%=`update-button-${index +1 }` %>' type='submit' value='Update'>
     </form>
-<% }) %>
+    <form action='/comment<%=bookmark.id%>' method="POST">
+        <input id='<%=`comment-box-${index +1 }` %>' type="text" name='text'>
+        <input type="submit" value='Add Comment'>
+    </form>
+        <% const filtComments = comments.filter(comment => comment["bookmark id"] === bookmark.id) %>
+        <% filtComments.map((comment,index) => { %>
+        <div id='comment-<%=index%>'>
+         <p><%= comment.text %></p>
+        </div>
+        <% }) %>
+    <% }) %>
 </div>

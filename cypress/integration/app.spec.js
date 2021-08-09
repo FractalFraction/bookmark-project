@@ -14,7 +14,6 @@ describe('bookmark manager index page', () => {
         cy.visit('/');
         cy.get('#url-box').type('www.reddit.com')
         cy.get('#tag-box').type('procrastination')
-        cy.get('#comment-box').type('for the memes')
         cy.get('#add-button').click()
         cy.get('#url1').contains('reddit')
     })

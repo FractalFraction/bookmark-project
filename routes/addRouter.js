@@ -13,14 +13,14 @@ const addRouter = Router.post('/', async (req, res) => {
     // Store the data using sequelize
     await bookmark.create(
         {
+          name: req.body.name,
           url:  req.body.url,
-          tag: req.body.tag,
-          comment: req.body.comment
+          tag: req.body.tag
         })
 
         res.redirect('/');
     } catch(error) {
-        console.log('Validation Error: URLs must be Unique!')
+        console.log(error);
     }
 
     req.app.locals.bookmark = bookmark

@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Bookmark extends Model {
     /**
@@ -10,13 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.Comments = this.hasMany(models.Comment, { onDelete: 'cascade' }, 
-     {foreignKey: 
-        {
-        name: 'bookmark id',
-        allowNull: false
-      }
+      this.Comments = this.hasMany(models.Comment, {
+        foreignKey: 'BookmarkId', 
+        onDelete: 'cascade', 
+        sourceKey: 'id'
       })
+      
     }
   };
   Bookmark.init({

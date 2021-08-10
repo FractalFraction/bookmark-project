@@ -1,3 +1,5 @@
+const { beforeEach } = require("mocha");
+
 describe('bookmark manager index page', () => {
 
     beforeEach(() => {
@@ -82,4 +84,34 @@ describe('commenting on bookmarks', () => {
     })
 
 });
+
+
+describe('tagging bookmarks', () => {
+    beforeEach(() => {
+        cy.task('taskTruncateTables');
+        cy.task('taskCreateTestBookmark');
+    })
+
+    it('tagging a bookmark', () => {
+        cy.visit('/');
+        cy.get('#tag-box-1').type('cats');
+        cy.get('#tag-button-1').click()
+        cy.get('#bookmark-1-tag-1').should('contain', 'cats')
+    })
+    
+    it(' two bookmarks can have same tags', () => {
+        cy.visit('/');
+        cy.get('#tag-box-1').type('cats');
+        cy.get('#tag-button-1').click()
+        cy.get('#bookmark-1-tag-1').should('contain', 'cats')
+
+    })
+
+    it('tagging the correct bookmark', () => {
+
+    })
+
+
+});
+
 

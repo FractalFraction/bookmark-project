@@ -8,14 +8,15 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
 
-     await queryInterface.addColumn('Comments', 'bookmark id', {
+     await queryInterface.addColumn('Comments', 'BookmarkId', {
       type: Sequelize.INTEGER,
       allowNull: false,
       after: 'text',
-      reference: {
-        model: 'Bookmarks',
+      references: {
+        model: 'Bookmarks', 
         key: 'id'
-      }
+      },
+      onDelete: 'CASCADE'
     });
   },
 
@@ -27,7 +28,7 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
      
-      await queryInterface.removeColumn('Comments','bookmark id');
+      await queryInterface.removeColumn('Comments','BookmarkId');
     }
 
 };

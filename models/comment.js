@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
     /**
@@ -10,12 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.Bookmark = this.belongsTo(models.Bookmark, {foreignKey: 
-        {
-        name: 'bookmark id',
-        allowNull: false
-      }
-      });
+      this.Bookmark = this.belongsTo(models.Bookmark, {
+        foreignKey: 'BookmarkId',  
+        targetKey: 'id'
+      }) 
     }
   };
   

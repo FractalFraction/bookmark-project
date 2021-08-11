@@ -8,9 +8,9 @@ deleteRouter.delete('/:id', async (req, res) => {
  //console.log(req);
  //console.log(req.params.id);
 
-  Bookmark = req.app.locals.bookmark
+  //Bookmark = req.app.locals.bookmark
   // Store the data using sequelize
-    await bookmark.destroy({
+    await Bookmark.destroy({
         where: {
             id: req.params.id    //req.app.locals.bookmark = bookmark
 

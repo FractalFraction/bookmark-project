@@ -19,7 +19,7 @@ const addRouter = Router.post('/', async (req, res) => {
           url:  req.body.url
         })
 
-        res.redirect('/');
+        //res.redirect('/');
     } catch(error) {
         console.log(error);
     }

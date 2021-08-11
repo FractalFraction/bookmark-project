@@ -9,6 +9,15 @@
     <form action='/update-button<%=bookmark.id%>' method="POST">
         <input id='<%=`update-button-${index +1 }` %>' type='submit' value='Update'>
     </form>
+    <form action='/tag<%=bookmark.id%>' method="POST">
+        <select>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel">Opel</option>
+            <option value="audi">Audi</option>
+        </select>
+        <input id='<%=` tag-button-${index + 1} `%>' type="submit" value='Add Tag'>
+    </form>
     <form action='/comment<%=bookmark.id%>' method="POST">
         <input id='<%=`comment-box-${index +1 }` %>' type="text" name='text'>
         <input id='<%=` comment-button-${index + 1} `%>' type="submit" value='Add Comment'>

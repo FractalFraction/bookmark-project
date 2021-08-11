@@ -1,11 +1,14 @@
 const express = require('express')
 const deleteRouter = express.Router();
 
+const db = require('../models');
+const Bookmark = db['Bookmark'];
+
 deleteRouter.delete('/:id', async (req, res) => {
  //console.log(req);
  //console.log(req.params.id);
 
-  bookmark = req.app.locals.bookmark
+  Bookmark = req.app.locals.bookmark
   // Store the data using sequelize
     await bookmark.destroy({
         where: {
@@ -20,10 +23,9 @@ deleteRouter.delete('/:id', async (req, res) => {
 
 deleteRouter.post('/delete', async (req, res) => {
 
-   bookmark = req.app.locals.bookmark
     // Store the data using sequelize
     try {
-    await bookmark.destroy({
+    await Bookmark.destroy({
         where: {
             url: req.body.dropdown
         }

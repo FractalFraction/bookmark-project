@@ -7,6 +7,7 @@ const db = require('../models');
 //const sequelize = db.sequelize;
 const Bookmark = db['Bookmark'];
 const Comment = db['Comment'];
+const Tag = db['Tag'];
 
 const indexRouter = Router.get('/', async (req, res) => {
 
@@ -19,11 +20,11 @@ const indexRouter = Router.get('/', async (req, res) => {
     }
     })
 
-    console.log("Bookmarks");
-    console.log(bookmarks)
-   // console.log("Bookmark Id")
-    //console.log(bookmarks[0].id);
-    console.log(bookmarks.Comments);
+  //   console.log("Bookmarks");
+  //   console.log(bookmarks)
+  //  // console.log("Bookmark Id")
+  //   //console.log(bookmarks[0].id);
+  //   console.log(bookmarks.Comments);
 
     // console.log("Bookmark Model");
     // console.log(Bookmark); 
@@ -34,12 +35,18 @@ const indexRouter = Router.get('/', async (req, res) => {
       attributes: ['id','text', 'BookmarkId']
     })
 
+    const tags = await Tag.findAll({
+      attributes: ['name']
+    })
+
+    // console.log("Tags");
+    // console.log(tags);
     // console.log("comments");
     // console.log(comments);
     // console.log("Comment")
     // console.log(Comment);
 
-    res.render('index.ejs', {bookmarks: bookmarks, comments: comments});
+    res.render('index.ejs', {bookmarks: bookmarks, comments: comments, tags: tags});
   })
 
 module.exports = indexRouter;

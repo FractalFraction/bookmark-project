@@ -15,8 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'BookmarkId', 
         onDelete: 'cascade', 
         sourceKey: 'id'
-      })
+      });
       
+      this.Tags = this.belongsToMany(models.Tag, {through: 'BookmarkTags'})
+
     }
   };
   Bookmark.init({

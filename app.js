@@ -28,16 +28,18 @@ const addRouter = require('./routes/addRouter');
 const deleteRouter = require('./routes/deleteRouter');
 const editRouter = require('./routes/editRouter');
 const addCommentRouter = require('./routes/addCommentRouter');
-const addTagRouter = require('./routes/addTag')
+const addTagRouter = require('./routes/addTag');
+const bookmarkAddTag = require('./routes/bookmarkAddTag'); 
+
 
 //Require more routers here
-
 app.use('/',indexRouter);
 app.use('/',addRouter);
 app.use('/', deleteRouter);
 app.use('/ ', editRouter);
 app.use('/', addCommentRouter);
 app.use('/', addTagRouter);
+app.use('/', bookmarkAddTag);
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}!`);

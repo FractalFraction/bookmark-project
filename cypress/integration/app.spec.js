@@ -28,8 +28,9 @@ describe('bookmark manager index page', () => {
         cy.task('taskCreateTestBookmark');
         cy.visit('/');
         cy.get('#update-dropdown').select('www.reddit.com')
-        cy.get('#update-tag').type('cat pictures')
+        cy.get('#update-bookmark').type('cat pictures')
         cy.get('#update-button').click()
+        cy.get('#bookmark-1').contains('cat pictures')
     })
 
     it('UPDATE: updates a bookmark via a button', () => {

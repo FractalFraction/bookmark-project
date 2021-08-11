@@ -3,10 +3,10 @@
     <p></p>
     <span id='<%= `name${index + 1}` %>'>name: <%= bookmark.name %></span><br>
     <span id='<%= `url${index + 1}` %>'>url: <%= bookmark.url %></span><br>
-    <form action='/<%=bookmark.id%>?_method=DELETE' method="POST">
+    <form action='/bookmark/<%=bookmark.id%>?_method=DELETE' method="POST">
         <button id='<%=`delete-button-${index + 1}` %>' type="submit" >Delete</button>
     </form>
-    <form action='/update-button<%=bookmark.id%>' method="POST">
+    <form action='/edit/gotoupdate<%=bookmark.id%>' method="POST">
         <input id='<%=`update-button-${index +1 }` %>' type='submit' value='Update'>
     </form>
     <form action='/tag<%=bookmark.id%>' method="POST">

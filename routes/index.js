@@ -20,17 +20,6 @@ const indexRouter = Router.get('/', async (req, res) => {
     }
     })
 
-  //   console.log("Bookmarks");
-  //   console.log(bookmarks)
-  //  // console.log("Bookmark Id")
-  //   //console.log(bookmarks[0].id);
-  //   console.log(bookmarks.Comments);
-
-    // console.log("Bookmark Model");
-    // console.log(Bookmark); 
-    // console.log("bookmarks")
-    // console.log(bookmarks);
-
     const comments = await Comment.findAll({
       attributes: ['id','text', 'BookmarkId']
     })
@@ -38,13 +27,6 @@ const indexRouter = Router.get('/', async (req, res) => {
     const tags = await Tag.findAll({
       attributes: ['name']
     })
-
-    // console.log("Tags");
-    // console.log(tags);
-    // console.log("comments");
-    // console.log(comments);
-    // console.log("Comment")
-    // console.log(Comment);
 
     res.render('index.ejs', {bookmarks: bookmarks, comments: comments, tags: tags});
   })

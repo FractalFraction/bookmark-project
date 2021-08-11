@@ -8,20 +8,10 @@ const Comment = db['Comment'];
 
 // Needs an id to know which bookmark to post it to!
 
-addCommentRouter.post('/comment:bookmarkId', async (req, res) => {
+addCommentRouter.post('/', async (req, res) => {
     
   // Modify the create method to check 
   // if the url already exists and if so tell the user 
-
-  // console.log(`Bookmark Id: ${req.params.bookmarkId}`);
-  // console.log(`Comment Text: ${req.body.text}`)
-  // console.log(`Comment Model: ${req.app.locals.comment}`)
-
-  // Store the data using sequelize
-
-  //console.log(req.app.locals.comment);
-
-  //Comment = req.app.locals.comment;
   
   try {
   await Comment.create(
@@ -33,7 +23,6 @@ addCommentRouter.post('/comment:bookmarkId', async (req, res) => {
       console.log(err);
     }
 
-  //req.app.locals.comment = Comment
   res.redirect('/');
   // POST the bookmark data
 })

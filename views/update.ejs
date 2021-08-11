@@ -3,8 +3,8 @@
 <body>
     <h1>Update your bookmark!</h1>
     <div>
-        <form action='/update<%=id%>?_method=PUT' method='post'>
-            <input id='update-tag' type='text' name='updateTag' placeholder='tag'>
+        <form action='/edit/update<%=id%>?_method=PUT' method='post'>
+            <input id='update-bookmark' type='text' name='bookmarkName' placeholder='name'>
             <input id="update-button" type='submit' value='Update Bookmark'>
         </form>
     </div>

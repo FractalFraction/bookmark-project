@@ -11,13 +11,19 @@ const Comment = db['Comment'];
 const indexRouter = Router.get('/', async (req, res) => {
 
     const bookmarks = await Bookmark.findAll({
-       attributes: ['id','name', 'url','tag'],
-       includes: {all: true}
-      //  includes: {
-      //   model: Comment,
-      //   attributes:['text']
-    //}
+       attributes: ['id','name', 'url'],
+      //  includes: {all: true}
+       includes: {
+        model: Comment,
+        attributes:['text']
+    }
     })
+
+    console.log("Bookmarks");
+    console.log(bookmarks)
+   // console.log("Bookmark Id")
+    //console.log(bookmarks[0].id);
+    console.log(bookmarks.Comments);
 
     // console.log("Bookmark Model");
     // console.log(Bookmark); 
@@ -28,10 +34,10 @@ const indexRouter = Router.get('/', async (req, res) => {
       attributes: ['id','text', 'BookmarkId']
     })
 
-    console.log("comments");
-    console.log(comments);
-    console.log("Comment")
-    console.log(Comment);
+    // console.log("comments");
+    // console.log(comments);
+    // console.log("Comment")
+    // console.log(Comment);
 
     res.render('index.ejs', {bookmarks: bookmarks, comments: comments});
   })

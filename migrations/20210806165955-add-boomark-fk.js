@@ -13,10 +13,12 @@ module.exports = {
       allowNull: false,
       after: 'text',
       references: {
-        model: 'Bookmarks', 
-        key: 'id'
+        model: {
+        tableName: 'Bookmarks'
+        },
+        key: 'id',
       },
-      onDelete: 'CASCADE'
+      allowNull: false
     });
   },
 

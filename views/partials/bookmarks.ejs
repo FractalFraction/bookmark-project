@@ -3,8 +3,6 @@
     <p></p>
     <span id='<%= `name${index + 1}` %>'>name: <%= bookmark.name %></span><br>
     <span id='<%= `url${index + 1}` %>'>url: <%= bookmark.url %></span><br>
-    <span id='<%= `tag${index + 1}` %>'> tags: <%= bookmark.tag %></span><br>
-    <% bookmark.id %> 
     <form action='/<%=bookmark.id%>?_method=DELETE' method="POST">
         <button id='<%=`delete-button-${index + 1}` %>' type="submit" >Delete</button>
     </form>

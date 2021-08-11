@@ -16,8 +16,7 @@ const addRouter = Router.post('/', async (req, res) => {
     await Bookmark.create(
         {
           name: req.body.name,
-          url:  req.body.url,
-          tag: req.body.tag
+          url:  req.body.url
         })
 
         res.redirect('/');

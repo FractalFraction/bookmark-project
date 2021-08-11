@@ -1,9 +1,11 @@
 require('dotenv').config()
-const {models,sequelize} = require('../models');
+
+const db = require('../models');
+const Bookmark = db['Bookmark'];
 
 const truncateTables = () => {
-    models.Bookmark.destroy({
-        truncate: true
+    Bookmark.destroy({
+        truncate: true, cascade: true
       });
 }
 

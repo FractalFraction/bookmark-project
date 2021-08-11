@@ -21,8 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Bookmark.init({
     name: DataTypes.STRING,
-    url: DataTypes.STRING,
-    tag: DataTypes.STRING
+    url: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Bookmark',

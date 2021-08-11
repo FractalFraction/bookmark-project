@@ -1,5 +1,6 @@
 require('dotenv').config()
-const {models,sequelize} = require('../models');
+const db = require('../models');
+const Bookmark = db['Bookmark'];
 
 const resetIds = () => {
     // Insert the reset method here

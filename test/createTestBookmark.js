@@ -1,20 +1,22 @@
 require('dotenv').config()
-const {models,sequelize} = require('../models_old');
+
+const db = require('../models');
+const Bookmark = db['Bookmark'];
 
 const createTestBookmark = () => {
-    models.Bookmark.create({
+    Bookmark.create({
         name : 'Reddit',
         url: 'www.reddit.com',
         tag: 'procrastination'
       });
 
-     models.Bookmark.create({
+     Bookmark.create({
         name : 'Cats',
         url: 'www.cats.co.uk',
         tag: 'cats'
       });
 
-      models.Bookmark.create({
+      Bookmark.create({
         name : 'Warhammer',
         url: 'www.warhammer.com',
         tag: 'gaming'

@@ -28,26 +28,17 @@ const indexRouter = Router.get('/', async (req, res) => {
     ]
     })
 
-    console.log("Bookmarks");
-    console.log(bookmarks);
-
-    // bookmarks.map(bookmark => {
-    //   // console.log("Bookmark Comments")
-    //   // console.log(bookmark.Comments)
-    //   console.log("Bookmark Tags")
-    //   console.log(bookmark.Tags)
-    //   console.log(bookmark.Tags[0])
-    //   console.log(bookmark.Tags[1]);
-    // });
-
+    //<% const filtComments = comments.filter(comment => (comment.BookmarkId === bookmark.id)) %> 
 
     const comments = await Comment.findAll({
       attributes: ['id','text', 'BookmarkId']
     })
 
+
     const tags = await Tag.findAll({
-      attributes: ['name']
+      attributes: ['id','name']
     })
+
 
     res.render('index.ejs', {bookmarks: bookmarks, comments: comments, tags: tags});
   })

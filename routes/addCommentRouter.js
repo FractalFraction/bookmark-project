@@ -8,7 +8,7 @@ const Comment = db['Comment'];
 
 // Needs an id to know which bookmark to post it to!
 
-addCommentRouter.post('/', async (req, res) => {
+addCommentRouter.post('/:bookmarkId', async (req, res) => {
     
   // Modify the create method to check 
   // if the url already exists and if so tell the user 

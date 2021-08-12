@@ -23,7 +23,7 @@ app.use('/',indexRouter);
 app.use('/',addRouter);
 app.use('/bookmark', deleteRouter);
 app.use('/edit', editRouter);
-app.use('/comment:bookmarkId', addCommentRouter);
+app.use('/comment', addCommentRouter);
 app.use('/addTag', addTagRouter);
 app.use('/tag', bookmarkAddTag);
 

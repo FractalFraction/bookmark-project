@@ -18,12 +18,11 @@
         </select>
         <input id='<%=` tag-button-${index + 1} `%>' type="submit" value='Add Tag'>
     </form>
-    <form action='/comment<%=bookmark.id%>' method="POST">
+    <form action='/comment/<%=bookmark.id%>' method="POST">
         <input id='<%=`comment-box-${index +1 }` %>' type="text" name='text'>
         <input id='<%=` comment-button-${index + 1} `%>' type="submit" value='Add Comment'>
     </form>
-        <% const filtComments = comments.filter(comment => (comment.BookmarkId === bookmark.id)) %> 
-        <% filtComments.map((comment,commentIndex) => { %>
+        <% bookmark.Comments.map((comment,commentIndex) => { %>
         <div id='comment-<%=index%>'>
          <p id="bookmark-<%=index %>-comment-<%=commentIndex %>" ><%= comment.text %></p>
         </div>

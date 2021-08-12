@@ -3,13 +3,14 @@
     <p></p>
     <span id='<%= `name${index + 1}` %>'>name: <%= bookmark.name %></span><br>
     <span id='<%= `url${index + 1}` %>'>url: <%= bookmark.url %></span><br>
+        <span id='<%= `bookmark${index + 1}-tags` %>'>Tags: <%= bookmark.Tags.map(tag => tag.name).join(", ")%></span><br>
     <form action='/bookmark/<%=bookmark.id%>?_method=DELETE' method="POST">
         <button id='<%=`delete-button-${index + 1}` %>' type="submit" >Delete</button>
     </form>
     <form action='/edit/gotoupdate<%=bookmark.id%>' method="POST">
         <input id='<%=`update-button-${index +1 }` %>' type='submit' value='Update'>
     </form>
-    <form action='/tag<%=bookmark.id%>' method="POST">
+    <form action='/tag/<%=bookmark.id%>' method="POST">
         <select name="tag">
             <% tags.map((tag,index) => { %>
                 <option value="<%= tag.name %>"><%= tag.name %></option> 

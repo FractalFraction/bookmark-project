@@ -5,24 +5,20 @@ const db = require('../models');
 const Tag = db['Tag'];
 const BookmarkTags = db['BookmarkTags'];
 
-bookmarkAddTag.post('/tag:bookmarkId', async (req, res) => {
-  //const tagname = req.body.tag;
+bookmarkAddTag.post('/:bookmarkId', async (req, res) => {
   const currentTag = await Tag.findOne({
     where: {
       name: req.body.tag
     }
   })
-  
-  //const tagId = currentTag.id;
 
-  // const bookmarkId = req.params.bookmarkId;
-  // console.log(bookmarkId)
-
-  BookmarkTags.create(
+  await BookmarkTags.findOrCreate({
+    where:
     {
       BookmarkId: req.params.bookmarkId,
       TagId: currentTag.id
-    })
+    }
+  });
 
   res.redirect('/');
 })

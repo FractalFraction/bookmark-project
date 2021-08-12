@@ -12,9 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.Comments = this.hasMany(models.Comment, {
-        foreignKey: 'BookmarkId', 
-        onDelete: 'cascade', 
-        sourceKey: 'id'
+        onDelete: 'cascade'
       });
       
       this.Tags = this.belongsToMany(models.Tag, {through: 'BookmarkTags'})

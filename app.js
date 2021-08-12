@@ -24,8 +24,8 @@ app.use('/',addRouter);
 app.use('/bookmark', deleteRouter);
 app.use('/edit', editRouter);
 app.use('/comment:bookmarkId', addCommentRouter);
-app.use('/', addTagRouter);
-app.use('/', bookmarkAddTag);
+app.use('/addTag', addTagRouter);
+app.use('/tag', bookmarkAddTag);
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}!`);

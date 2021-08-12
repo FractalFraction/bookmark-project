@@ -14,11 +14,32 @@ const indexRouter = Router.get('/', async (req, res) => {
     const bookmarks = await Bookmark.findAll({
        attributes: ['id','name', 'url'],
       //  includes: {all: true}
-       includes: {
+       include:[
+      {
         model: Comment,
-        attributes:['text']
-    }
+        required: false,
+        attributes: ['text']
+      }, 
+      {
+        model: Tag,
+        required: false,
+        attributes: ['name']
+      }
+    ]
     })
+
+    console.log("Bookmarks");
+    console.log(bookmarks);
+
+    // bookmarks.map(bookmark => {
+    //   // console.log("Bookmark Comments")
+    //   // console.log(bookmark.Comments)
+    //   console.log("Bookmark Tags")
+    //   console.log(bookmark.Tags)
+    //   console.log(bookmark.Tags[0])
+    //   console.log(bookmark.Tags[1]);
+    // });
+
 
     const comments = await Comment.findAll({
       attributes: ['id','text', 'BookmarkId']
